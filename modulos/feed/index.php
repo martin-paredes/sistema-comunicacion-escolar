@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>***Avisos***</title>
-    <link rel="stylesheet" href="./estilos/feed.css" />
+    <link rel="stylesheet" href="../../estilos/feed.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <li><a href="#alumnos">Alumnos</a></li>
         <li><a href="#padres">Padres</a></li>
         <li style="float: right">
-            <a class="active" style="cursor: pointer" onclick="window.location.href='index.html';">Salir</a>
+            <a class="active" style="cursor: pointer" onclick="window.location.href='../../index.php';">Salir</a>
         </li>
     </ul>
 
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>

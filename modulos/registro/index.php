@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <title>Registro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./estilos/styles.css">
-    <link rel="stylesheet" href="./estilos/registro.css">
+    <link rel="stylesheet" href="../../estilos/styles.css">
+    <link rel="stylesheet" href="../../estilos/registro.css">
 </head>
 
 <body>
@@ -30,11 +30,11 @@
                 <input class="input-field" type="password" placeholder="Contraseña" name="psw">
             </div>
 
-            <button type="button" onclick="window.location.href='feed.html';">Registrarme</button>
+            <button type="button" onclick="window.location.href='../feed/index.php';">Registrarme</button>
         </div>
 
         <div class="container">
-            <button type="button" class="cancelbtn" onclick="window.location.href='index.html';">Ingresar, ya tengo
+            <button type="button" class="cancelbtn" onclick="window.location.href='../login/index.php';">Ingresar, ya tengo
                 cuenta</button>
         </div>
     </form>
