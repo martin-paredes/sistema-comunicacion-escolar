@@ -31,8 +31,9 @@ CREATE TABLE `semestres` (
 --
 CREATE TABLE `administradores` (
     `ID_ADMINISTRADORES` INT(10) NOT NULL AUTO_INCREMENT,
-    `NOMBRE` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
-    `PASSWORD` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+    `NOMBRE` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+    `CORREO` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+    `PASSWORD` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     PRIMARY KEY (`ID_ADMINISTRADORES`) USING BTREE,
     INDEX `ID_ADMINISTRADORES` (`ID_ADMINISTRADORES`) USING BTREE
 ) COLLATE = 'utf8_general_ci' ENGINE = InnoDB AUTO_INCREMENT = 1;
@@ -44,6 +45,7 @@ CREATE TABLE `alumnos` (
     `ID_ALUMNOS` INT(10) NOT NULL AUTO_INCREMENT,
     `NOMBRE` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `APELLIDOS` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+    `CORREO` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `PASSWORD` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `SEMESTRE` INT(10) NOT NULL,
     PRIMARY KEY (`ID_ALUMNOS`) USING BTREE,
@@ -59,6 +61,7 @@ CREATE TABLE `asesores` (
     `ID_ASESORES` INT(10) NOT NULL AUTO_INCREMENT,
     `NOMBRE` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `APELLIDOS` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+    `CORREO` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `PASSWORD` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     `SEMESTRE` INT(10) NOT NULL,
     PRIMARY KEY (`ID_ASESORES`) USING BTREE,
@@ -106,39 +109,42 @@ VALUES
 -- Volcado de datos para la tabla `administradores`
 --
 INSERT INTO
-    `sistema_comunicacion_escolar`.`administradores` (`NOMBRE`, `PASSWORD`)
+    `sistema_comunicacion_escolar`.`administradores` (`NOMBRE`, `CORREO`, `PASSWORD`)
 VALUES
-    ('admin', '0192023a7bbd73250516f069df18b500');
+    ('admin', 'admin@admin.com', '0192023a7bbd73250516f069df18b500');
 
 --
 -- Volcado de datos para la tabla `alumnos`
 --
 INSERT INTO
-    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `PASSWORD`, `SEMESTRE`)
+    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `CORREO`, `PASSWORD`, `SEMESTRE`)
 VALUES
     (
         'Juan ',
         'Pérez Cortés',
+        'juan@gmail.com',
         '0c82ca5b1092a0c21dcfe3200688046e',
         1
     );
 
 INSERT INTO
-    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `PASSWORD`, `SEMESTRE`)
+    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `CORREO`, `PASSWORD`, `SEMESTRE`)
 VALUES
     (
         'Pedro ',
         'Sánchez García',
+        'pedro@gmail.com',
         '0c82ca5b1092a0c21dcfe3200688046e',
         2
     );
 
 INSERT INTO
-    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `PASSWORD`, `SEMESTRE`)
+    `sistema_comunicacion_escolar`.`alumnos` (`NOMBRE`, `APELLIDOS`, `CORREO`, `PASSWORD`, `SEMESTRE`)
 VALUES
     (
         'Pablo ',
         'Huerta Flores',
+        'pablo@gmail.com',
         '0c82ca5b1092a0c21dcfe3200688046e',
         3
     );
@@ -147,11 +153,12 @@ VALUES
 -- Volcado de datos para la tabla `asesores`
 --
 INSERT INTO
-    `sistema_comunicacion_escolar`.`asesores` (`NOMBRE`, `APELLIDOS`, `PASSWORD`, `SEMESTRE`)
+    `sistema_comunicacion_escolar`.`asesores` (`NOMBRE`, `APELLIDOS`, `CORREO`, `PASSWORD`, `SEMESTRE`)
 VALUES
     (
         'Tomás',
         'Calderón García',
+        'tomas@gmail.com',
         'da113d70eb6bba2b1f007869b773907d',
         1
     );
@@ -160,6 +167,7 @@ INSERT INTO
     `sistema_comunicacion_escolar`.`asesores` (
         `NOMBRE`,
         `APELLIDOS`,
+        `CORREO`,
         `PASSWORD`,
         `SEMESTRE`
     )
@@ -167,16 +175,18 @@ VALUES
     (
         'Saúl',
         'Hernández López',
+        'saul@gmail.com',
         'da113d70eb6bba2b1f007869b773907d',
         2
     );
 
 INSERT INTO
-    `sistema_comunicacion_escolar`.`asesores` (`NOMBRE`, `APELLIDOS`, `PASSWORD`, `SEMESTRE`)
+    `sistema_comunicacion_escolar`.`asesores` (`NOMBRE`, `APELLIDOS`, `CORREO`, `PASSWORD`, `SEMESTRE`)
 VALUES
     (
         'Ivette',
         'Rivera López',
+        'ivette@gmail.com',
         'da113d70eb6bba2b1f007869b773907d',
         3
     );
