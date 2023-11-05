@@ -28,10 +28,23 @@ button:hover {
 
 button {
     background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
     border: none;
+    color: white;
     cursor: pointer;
+    margin: 8px 0;
+    padding: 14px 20px;
     width: 100%;
+}
+
+.container-button-home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+}
+
+.logo-cecyte-home {
+    height: 30%;
+    width: 30%;
 }
