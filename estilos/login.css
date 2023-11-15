@@ -1,5 +1,4 @@
-input[type=text],
-input[type=password] {
+input[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -10,6 +9,7 @@ input[type=password] {
 
 
 .imgcontainer {
+    height: 100px;
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
@@ -18,4 +18,41 @@ input[type=password] {
 img.avatar {
     width: 40%;
     border-radius: 50%;
+}
+
+.input-container {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding: 10px;
+    background: #04AA6D;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    border: 2px solid #04AA6D;
+}
+
+.avatar {
+    color: #04AA6D;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }
