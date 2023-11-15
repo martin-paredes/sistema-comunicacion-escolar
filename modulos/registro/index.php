@@ -12,33 +12,34 @@
 
 <body>
 
-    <form class="modal-content">
+    <form class="modal-content" action="../feed/index.php">
         <div class="container">
 
             <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Usuario" name="usrnm">
-            </div>
-
-            <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                <input class="input-field" type="text" placeholder="Correo" name="email">
+                <input class="input-field" type="email" placeholder="Correo" name="email" required>
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Contraseña" name="psw">
+                <input id="pwd" name="pwd" class="input-field" type="password" placeholder="Contraseña" pattern="^\S{6,}$" oninput="checkPassword()" maxlength="8" required>
             </div>
 
-            <button type="button" onclick="window.location.href='../feed/index.php';">Registrarme</button>
-        </div>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <input id="pwd-two" name="pwd-two" class="input-field" type="password" placeholder="Confirmar contraseña" pattern="^\S{6,}$" oninput="checkPassword()" maxlength="8" required>
+            </div>
 
+            <span class="label">Mostrar contraseña</span><input type="checkbox" onclick="viewPassword()" style="cursor: pointer;">
+
+            <button type="submit">Registrarme</button>
+        </div>
         <div class="container">
             <button type="button" class="cancelbtn" onclick="window.location.href='../login/index.php';">Ingresar, ya tengo
                 cuenta</button>
         </div>
     </form>
-
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>

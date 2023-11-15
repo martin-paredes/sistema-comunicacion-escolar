@@ -26,7 +26,30 @@ function showSlides(n) {
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(' active', '');
     }
-    slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].className += ' active';
-    captionText.innerHTML = dots[slideIndex - 1].alt;
+    if (slides && slides.length > 0) {
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].className += ' active';
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+}
+
+function checkPassword() {
+    var input = document.getElementById('pwd-two');
+    if (input.value != document.getElementById('pwd').value) {
+        input.setCustomValidity('La contraseña debe coincidir');
+    } else {
+        input.setCustomValidity('');
+    }
+}
+
+function viewPassword() {
+    let pwd = document.getElementById("pwd");
+    let pwdTwo = document.getElementById("pwd-two");
+    if (pwd.type === "password") {
+        pwd.type = "text";
+        pwdTwo.type = "text";
+    } else {
+        pwd.type = "password";
+        pwdTwo.type = "password";
+    }
 }

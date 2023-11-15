@@ -48,3 +48,8 @@ button {
     height: 30%;
     width: 30%;
 }
+
+.label {
+    font-size: small;
+    font-family: sans-serif;
+}
