@@ -23,3 +23,39 @@
 .input-field:focus {
     border: 2px solid #04AA6D;
 }
+
+.modal-content {
+    width: 25%;
+    margin: auto;
+}
+
+.wrapper {
+    height: 80vh !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.logincontainer {
+    width: 100%;
+}
+
+@media screen and (min-width: 200px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .modal-content {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .modal-content {
+        width: 25%;
+    }
+}
