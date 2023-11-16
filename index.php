@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ingresar</title>
     <link rel="stylesheet" href="./estilos/styles.css" />
+    <link rel="stylesheet" href="./estilos/home.css" />
 </head>
 
-<body style="background-color: #ffffff;">
+<body>
     <div>
         <div style="padding: 20px; text-align: center;">
             <img src="./assets/logo_cecyte.jpg" alt="Logo" class="logo-cecyte-home" />
