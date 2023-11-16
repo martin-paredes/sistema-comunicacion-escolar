@@ -12,10 +12,18 @@
 
 <body>
     <div class="wrapper">
-        <div class="logincontainer ">
+        <div class="div-container ">
             <form class="modal-content" action="../feed/index.php">
                 <div class="imgcontainer">
                     <i class="fa fa-user avatar"></i>
+                </div>
+
+                <div class="input-container">
+                    <select name="roles" id="roles" required>
+                        <option value="alumno" selected>Alumno</option>
+                        <option value="asesor">Asesor</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
                 </div>
 
                 <div class="container">
@@ -36,7 +44,7 @@
 
                 <div class="container">
                     <button type="button" class="cancelbtn" onclick="window.location.href='../registro/index.php';">
-                        Registrarme, no tengo cuenta
+                        Registrarme, no tengo cuenta (Solo alumnos)
                     </button>
                 </div>
             </form>

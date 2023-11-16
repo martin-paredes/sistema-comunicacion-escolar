@@ -12,10 +12,22 @@
 
 <body>
     <div class="wrapper">
-        <div class="logincontainer ">
+        <div class="div-container ">
             <form class="modal-content" action="../feed/index.php">
-                <div class="container">
+                <div class="imgcontainer">
+                    <i class="fa fa-user avatar"></i>
+                </div>
 
+                <div class="input-container">
+                    <select name="roles" id="roles" required>
+                        <option value="" selected>Selecciona tu semestre</option>
+                        <option value="semestre_1_2">1er y 2do Semestre</option>
+                        <option value="semestre_3_4">3er y 4to Semestre</option>
+                        <option value="semestre_5_6">5to y 6to Semestre</option>
+                    </select>
+                </div>
+
+                <div class="container">
                     <div class="input-container">
                         <i class="fa fa-envelope icon"></i>
                         <input class="input-field" type="email" placeholder="Correo" name="email" required>
