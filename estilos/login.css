@@ -7,6 +7,10 @@ input[type=text] {
     box-sizing: border-box;
 }
 
+.modal-content {
+    width: 25%;
+    margin: auto;
+}
 
 .imgcontainer {
     height: 100px;
@@ -55,4 +59,35 @@ img.avatar {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.wrapper {
+    height: 80vh !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.logincontainer {
+    width: 100%;
+}
+
+@media screen and (min-width: 200px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .modal-content {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .modal-content {
+        width: 25%;
+    }
 }
