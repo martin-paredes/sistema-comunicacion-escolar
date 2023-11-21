@@ -4,6 +4,19 @@ session_start();
 if ($_SESSION['CORREO'] === null) {
     header("location: ../../index.php");
 }
+
+if (isset($_GET['form'])) {
+
+    switch ($_POST['form']) {
+        case "A":
+            echo "submitted A";
+            break;
+
+        case "B":
+            echo "submitted B";
+            break;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +25,9 @@ if ($_SESSION['CORREO'] === null) {
     <meta charset="UTF-8" />
     <title>***Avisos***</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../estilos/styles.css" />
     <link rel="stylesheet" href="../../estilos/feed.css" />
 </head>
@@ -33,66 +49,62 @@ if ($_SESSION['CORREO'] === null) {
         </li>
     </ul>
 
-    <div id="asesor" class="container">
+    <div id="asesor" class="container" style="display: none;">
+        <h2>Datos Asesor</h2>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Semestre</th>
+            </tr>
+            <tr>
+                <td>Tomás Calderón García</td>
+                <td>tomas@gmail.com</td>
+                <td>1</td>
+            </tr>
+        </table>
     </div>
 
     <div id="avisos" class="container">
-        <div class="mySlides">
-            <div class="numbertext">1 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_woods_wide.jpg" style="width: 100%" />
-        </div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+            </ol>
 
-        <div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_5terre_wide.jpg" style="width: 100%" />
-        </div>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="../../avisos/semestres_1_2/aviso_1.jpg" alt="aviso_1" style="width:100%;">
+                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width: 100%" />
-        </div>
+                <div class="item">
+                    <img src="../../avisos/semestres_1_2/aviso_2.jpg" alt="aviso_2" style="width:100%;">
+                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">4 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width: 100%" />
-        </div>
+                <div class="item">
+                    <img src="../../avisos/semestres_1_2/aviso_3.jpg" alt="aviso_3" style="width:100%;">
+                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">5 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width: 100%" />
-        </div>
+                <div class="item">
+                    <img src="../../avisos/semestres_1_2/aviso_4.jpg" alt="aviso_4" style="width:100%;">
+                </div>
 
-        <div class="mySlides">
-            <div class="numbertext">6 / 6</div>
-            <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width: 100%" />
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-
-        <div class="caption-container">
-            <p id="caption"></p>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_woods.jpg" style="width: 100%" onclick="currentSlide(1)" alt="Semana Santa" />
+                <div class="item">
+                    <img src="../../avisos/semestres_1_2/aviso_5.jpg" alt="aviso_5" style="width:100%;">
+                </div>
             </div>
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_5terre.jpg" style="width: 100%" onclick="currentSlide(2)" alt="Fin de Ciclo" />
-            </div>
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_mountains.jpg" style="width: 100%" onclick="currentSlide(3)" alt="Inicio de Ciclo" />
-            </div>
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_lights.jpg" style="width: 100%" onclick="currentSlide(4)" alt="Día de Muertos" />
-            </div>
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_nature.jpg" style="width: 100%" onclick="currentSlide(5)" alt="Navidad" />
-            </div>
-            <div class="column">
-                <img class="demo cursor" src="https://www.w3schools.com/howto/img_snow.jpg" style="width: 100%" onclick="currentSlide(6)" alt="Inscripciones" />
-            </div>
+
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
 
