@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if ($_SESSION && $_SESSION['CORREO'] !== null) {
+    if ($_SESSION['ROL'] === 'administrador')
+        header("location: ./modulos/feed-administradores/index.php");
+    else if ($_SESSION['ROL'] === 'asesor')
+        header("location: ./modulos/feed-asesores/index.php");
+    else if ($_SESSION['ROL'] === 'alumno')
+        header("location: ./modulos/feed-alumnos/index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
