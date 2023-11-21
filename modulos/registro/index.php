@@ -30,10 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql_insert = "INSERT INTO alumnos (NOMBRE, APELLIDOS, CORREO, PASSWORD, SEMESTRE) VALUES ('$nombre', '$apellidos', '$correo', '$password', '$semestre')";
 
             if (mysqli_query($conexion, $sql_insert)) {
-                $_SESSION['NOMBRE'] = $_POST['nombre'];
-                $_SESSION['APELLIDOS'] = $_POST['apellidos'];
-                $_SESSION['CORREO'] = $_POST['correo'];
-                $_SESSION['SEMESTRE'] = $_POST['semestre'];
+                $sql = "SELECT * FROM alumnos AS A INNER JOIN semestres AS S ON A.SEMESTRE = S.ID_SEMESTRES WHERE A.CORREO = '$correo' and A.PASSWORD = '$password'";
+                $result = mysqli_query($conexion, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $_SESSION['ID_ALUMNOS'] = $row['ID_ALUMNOS'];
+                $_SESSION['NOMBRE'] = $row['NOMBRE'];
+                $_SESSION['APELLIDOS'] = $row['APELLIDOS'];
+                $_SESSION['CORREO'] = $row['CORREO'];
+                $_SESSION['SEMESTRE_ID'] = $row['SEMESTRE'];
+                $_SESSION['SEMESTRE_DESC'] = $row['VALOR'];
                 $_SESSION['ROL'] = 'alumno';
                 header("location: ../feed-alumnos/index.php");
             } else {

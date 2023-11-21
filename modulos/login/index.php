@@ -27,7 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-    $sql = "SELECT * FROM $tabla AS A WHERE A.CORREO = '$correo' and A.PASSWORD = '$password'";
+    $sql = "SELECT * FROM $tabla AS A INNER JOIN semestres AS S ON A.SEMESTRE = S.ID_SEMESTRES WHERE A.CORREO = '$correo' and A.PASSWORD = '$password'";
+
+    if ($_POST['roles'] === 'administrador') {
+        $sql = "SELECT * FROM $tabla AS A WHERE A.CORREO = '$correo' and A.PASSWORD = '$password'";
+    }
 
     $result = mysqli_query($conexion, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -37,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['NOMBRE'] = $row['NOMBRE'];
         $_SESSION['APELLIDOS'] = $row['APELLIDOS'];
         $_SESSION['CORREO'] = $row['CORREO'];
-        $_SESSION['SEMESTRE'] = $row['SEMESTRE'];
+        $_SESSION['SEMESTRE_ID'] = $row['SEMESTRE'];
+        $_SESSION['SEMESTRE_DESC'] = $row['VALOR'];
         $_SESSION['ROL'] = $_POST['roles'];
         header("location: ../feed-" . $tabla .  "/index.php");
     } else {
