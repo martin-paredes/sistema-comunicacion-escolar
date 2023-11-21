@@ -34,8 +34,8 @@ function showSlides(n) {
 }
 
 function checkPassword() {
-    var input = document.getElementById('pwd-two');
-    if (input.value != document.getElementById('pwd').value) {
+    var input = document.getElementById('password-two');
+    if (input.value != document.getElementById('password').value) {
         input.setCustomValidity('La contraseña debe coincidir');
     } else {
         input.setCustomValidity('');
@@ -43,13 +43,13 @@ function checkPassword() {
 }
 
 function viewPassword() {
-    let pwd = document.getElementById("pwd");
-    let pwdTwo = document.getElementById("pwd-two");
-    if (pwd.type === "password") {
-        pwd.type = "text";
-        pwdTwo.type = "text";
+    let password = document.getElementById("password");
+    let passwordTwo = document.getElementById("password-two");
+    if (password.type === "password") {
+        password.type = "text";
+        passwordTwo ? passwordTwo.type = "text" : null;
     } else {
-        pwd.type = "password";
-        pwdTwo.type = "password";
+        password.type = "password";
+        passwordTwo ? passwordTwo.type = "password" : null;
     }
 }
