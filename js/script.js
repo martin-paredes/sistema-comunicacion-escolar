@@ -63,12 +63,13 @@ function ocultarMostrar(elements, style) {
     }
 }
 
-function eliminarAviso() {
+function eliminarAviso(avisoId) {
+    console.log(avisoId);
     let text = "Realmente desea eliminar el aviso?";
     if (confirm(text) == true) {
-        text = "OK!";
+        return true;
     } else {
-        text = "canceled!";
+        return false;
     }
 }
 
@@ -91,12 +92,8 @@ window.onclick = function (event) {
 function obtenerListadoAlumnos() {
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("propDisplay").innerHTML = this.responseText;
-            console.log(xmlhttp.responseText);
-            // Use the foodArray data here
-        }
+        if (this.readyState == 4 && this.status == 200) { }
     };
-    xmlhttp.open("POST", "../feed-asesores/alumnos.php", true);
+    xmlhttp.open("POST", "../modulos/funciones.php", true);
     xmlhttp.send();
 }
