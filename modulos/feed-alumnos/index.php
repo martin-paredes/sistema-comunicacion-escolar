@@ -12,25 +12,31 @@ if ($_SESSION['CORREO'] === null) {
     <meta charset="UTF-8" />
     <title>***Avisos***</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../estilos/styles.css" />
     <link rel="stylesheet" href="../../estilos/feed.css" />
 </head>
 
 <body>
     <ul>
         <li>
-            <a class="active" href="#avisos"><i class="fa fa-fw fa-newspaper-o"></i> Avisos </a>
+            <a class="active" onclick="ocultarMostrar(document.getElementById('asesor'), 'none'); ocultarMostrar(document.getElementById('avisos'), 'block');">
+                <i class="fa fa-fw fa-newspaper-o"></i> Avisos
+            </a>
         </li>
         <li>
-            <a href="#asesor"><i class="fa fa-fw fa-user-o"></i> Asesor </a>
+            <a onclick="ocultarMostrar(document.getElementById('avisos'), 'none'); ocultarMostrar(document.getElementById('asesor'), 'block')">
+                <i class="fa fa-fw fa-user-o"></i> Asesor
+            </a>
         </li>
         <li style="float: right">
             <a style="cursor: pointer" href="../logout.php"><i class="fa fa-fw fa-sign-out"></i>Salir</a>
         </li>
     </ul>
 
-    <h2 style="text-align: center">Avisos</h2>
+    <div id="asesor" class="container">
+    </div>
 
-    <div class="container">
+    <div id="avisos" class="container">
         <div class="mySlides">
             <div class="numbertext">1 / 6</div>
             <img src="https://www.w3schools.com/howto/img_woods_wide.jpg" style="width: 100%" />

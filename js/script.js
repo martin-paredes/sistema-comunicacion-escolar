@@ -53,3 +53,10 @@ function viewPassword() {
         passwordTwo ? passwordTwo.type = "password" : null;
     }
 }
+
+function ocultarMostrar(elements, style) {
+    elements = elements.length ? elements : [elements];
+    for (var index = 0; index < elements.length; index++) {
+        elements[index].style.display = style;
+    }
+}
