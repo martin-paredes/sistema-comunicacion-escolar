@@ -1,20 +1,30 @@
+<?php
+session_start();
+
+if ($_SESSION['CORREO'] === null) {
+    header("location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
     <title>***Avisos***</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../estilos/feed.css" />
 </head>
 
 <body>
     <ul>
-        <li><a class="active" href="#avisos">Avisos</a></li>
-        <li><a href="#tutor">Tutor</a></li>
-        <li><a href="#alumnos">Alumnos</a></li>
-        <li><a href="#padres">Padres</a></li>
+        <li>
+            <a class="active" href="#avisos"><i class="fa fa-fw fa-newspaper-o"></i> Avisos </a>
+        </li>
+        <li>
+            <a href="#asesor"><i class="fa fa-fw fa-user-o"></i> Asesor </a>
+        </li>
         <li style="float: right">
-            <a class="active" style="cursor: pointer" onclick="window.location.href='../../index.php';">Salir</a>
+            <a style="cursor: pointer" href="../logout.php"><i class="fa fa-fw fa-sign-out"></i>Salir</a>
         </li>
     </ul>
 
