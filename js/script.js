@@ -1,4 +1,6 @@
 let slideIndex = 1;
+let modal = document.getElementById("modal-cargar-avisos");
+
 showSlides(slideIndex);
 
 function plusSlides(n) {
@@ -59,4 +61,42 @@ function ocultarMostrar(elements, style) {
     for (var index = 0; index < elements.length; index++) {
         elements[index].style.display = style;
     }
+}
+
+function eliminarAviso() {
+    let text = "Realmente desea eliminar el aviso?";
+    if (confirm(text) == true) {
+        text = "OK!";
+    } else {
+        text = "canceled!";
+    }
+}
+
+function abrirModalCargarAvisos() {
+    fechaInicial.min = new Date().toISOString().split("T")[0];
+    fechaFinal.min = new Date().toISOString().split("T")[0];
+    modal.style.display = "block";
+}
+
+function cerrarModal() {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function obtenerListadoAlumnos() {
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // document.getElementById("propDisplay").innerHTML = this.responseText;
+            console.log(xmlhttp.responseText);
+            // Use the foodArray data here
+        }
+    };
+    xmlhttp.open("POST", "../feed-asesores/alumnos.php", true);
+    xmlhttp.send();
 }
