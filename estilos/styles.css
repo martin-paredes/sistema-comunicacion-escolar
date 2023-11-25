@@ -80,6 +80,11 @@ img.avatar {
     width: 100%;
 }
 
+.icon-actions {
+    color: #04AA6D;
+    cursor: pointer;
+}
+
 .modal-content {
     width: 25%;
     margin: auto;

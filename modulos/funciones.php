@@ -14,7 +14,7 @@ function getAlumnos()
 function getAvisos()
 {
     global $conexion;
-    $query = "SELECT * FROM avisos AS AV WHERE AV.SEMESTRE = " . $_SESSION['SEMESTRE_ID'] . " AND AV.FECHA_INICIO >= CURDATE() AND AV.ESTATUS = 1";
+    $query = "SELECT * FROM avisos AS AV WHERE AV.SEMESTRE = " . $_SESSION['SEMESTRE_ID'] . " AND AV.ESTATUS = 1";
     $result = mysqli_query($conexion, $query);
     return $result;
 }

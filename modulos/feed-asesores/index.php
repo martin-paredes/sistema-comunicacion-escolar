@@ -10,7 +10,7 @@ if ($_SESSION['CORREO'] === null) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_REQUEST['delete'])) {
-        $sql_update = "UPDATE avisos SET ESTATUS = 0 WHERE ID_AVISOS = " . $_REQUEST['delete'];
+        $sql_update = "UPDATE avisos SET ACTIVO = 0, ESTATUS = 0 WHERE ID_AVISOS = " . $_REQUEST['delete'];
         if (mysqli_query($conexion, $sql_update)) {
             echo '<script language="javascript">';
             echo 'alert("Aviso eliminado correctamente")';
@@ -104,15 +104,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr>
                     <td><?php echo $rows['RUTA']; ?></td>
                     <td><?php echo $rows['DESCRIPCION']; ?></td>
-                    <td><?php echo $rows['FECHA_INICIO']; ?></td>
-                    <td><?php echo $rows['FECHA_FIN']; ?></td>
+                    <td><?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? "<strong>" . $rows['FECHA_INICIO'] . "</strong>" : $rows['FECHA_INICIO']) ?></td>
+                    <td><?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? "<strong>" . $rows['FECHA_FIN'] . "</strong>" : $rows['FECHA_FIN']) ?></td>
                     <td>
-                        <input type="checkbox" style="cursor: pointer;" <?php echo ($rows['ACTIVO'] == 1 ? 'checked' : ''); ?> />&nbsp;
+                        <input type="checkbox" class="icon-actions" <?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? 'disabled' : ''); ?> <?php echo ($rows['ACTIVO'] == 1 ? 'checked' : ''); ?> />&nbsp;
                     </td>
                     <td>
-                        <form method="post" onsubmit="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
+                        <a href="./eliminar-avisos.php?id=<?php echo $rows['ID_AVISOS']; ?>"><i class="fa fa-fw fa-trash icon-actions"></i></a>
+                        <i class="fa fa-fw fa-pencil-square-o icon-actions" onclick="abrirModalCargarAvisos()"></i>
+                        <!-- <form method="post" onsubmit="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
                             <button class="cancelbtn" name="delete" value="<?php echo $rows['ID_AVISOS']; ?>">Eliminar</button>
                         </form>
+                        <form method="post" onsubmit="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
+                            <i class="fa fa-fw fa-graduation-cap" style="color: red;"></i>
+                        </form> -->
                     </td>
                 </tr>
             <?php
