@@ -58,32 +58,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="close" onclick="cerrarModal()">&times;</span>
             <h2>Formulario para Subir Avisos (<?php echo $_SESSION['SEMESTRE_DESC'] ?>)</h2>
 
-            <div class="container">
-                <h5>Descripción</h5>
-                <div class="input-container">
-                    <i class="fa fa-pencil icon"></i>
-                    <input class="input-field" type="descripcion" placeholder="Descripción" name="descripcion" maxlength="50" required>
+            <form method="post" action="subir-aviso.php" enctype="multipart/form-data">
+                <div class="container">
+                    <h5>Descripción</h5>
+                    <div class="input-container">
+                        <i class="fa fa-pencil icon"></i>
+                        <input class="input-field" type="descripcion" placeholder="Descripción" name="descripcion" maxlength="50" required>
+                    </div>
+
+                    <h5>Fecha Inicial</h5>
+                    <div class="input-container">
+                        <i class="fa fa-calendar icon"></i>
+                        <input class="input-field" type="date" id="fechaInicial" placeholder="Fecha Inicial" name="fechaInicial" required>
+                    </div>
+
+                    <h5>Fecha Final</h5>
+                    <div class="input-container">
+                        <i class="fa fa-calendar icon"></i>
+                        <input class="input-field" type="date" id="fechaFinal" placeholder="Fecha Final" name="fechaFinal" required>
+                    </div>
+
+                    <label for="fileToUpload">Selecciona tu aviso:</label>
+                    <input type="file" id="fileToUpload" name="fileToUpload" accept=".jpg, .jpeg, .png" required><br><br>
+
+                    <button type="submit">
+                        Subir Aviso
+                    </button>
                 </div>
+            </form>
 
-                <h5>Fecha Inicial</h5>
-                <div class="input-container">
-                    <i class="fa fa-calendar icon"></i>
-                    <input class="input-field" type="date" id="fechaInicial" placeholder="Fecha Inicial" name="fechaInicial" required>
-                </div>
-
-                <h5>Fecha Final</h5>
-                <div class="input-container">
-                    <i class="fa fa-calendar icon"></i>
-                    <input class="input-field" type="date" id="fechaFinal" placeholder="Fecha Final" name="fechaFinal" required>
-                </div>
-
-                <label for="myfile">Selecciona tu aviso:</label>
-                <input type="file" id="myfile" name="myfile" accept=".jpg, .jpeg, .png"><br><br>
-
-                <button type="submit">
-                    Subir Aviso
-                </button>
-            </div>
         </div>
     </div>
 
@@ -104,20 +107,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr>
                     <td><?php echo $rows['RUTA']; ?></td>
                     <td><?php echo $rows['DESCRIPCION']; ?></td>
-                    <td><?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? "<strong>" . $rows['FECHA_INICIO'] . "</strong>" : $rows['FECHA_INICIO']) ?></td>
-                    <td><?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? "<strong>" . $rows['FECHA_FIN'] . "</strong>" : $rows['FECHA_FIN']) ?></td>
+                    <td><?php echo $rows['FECHA_INICIO']; ?></td>
+                    <td><?php echo $rows['FECHA_FIN']; ?></td>
                     <td>
-                        <input type="checkbox" class="icon-actions" <?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? 'disabled' : ''); ?> <?php echo ($rows['ACTIVO'] == 1 ? 'checked' : ''); ?> />&nbsp;
+                        <a class="custom-icon" href="./activar-aviso.php?id=<?php echo $rows['ID_AVISOS']; ?>&activo=<?php echo ($rows['ACTIVO']); ?>" onclick="return activarAviso(<?php echo $rows['FECHA_INICIO'] < date("Y-m-d") ?>);">
+                            <i class="fa fa-fw <?php echo ($rows['ACTIVO'] == 1 ? 'fa-check-square-o' : 'fa-square-o'); ?> <?php echo ($rows['FECHA_INICIO'] < date("Y-m-d") ? "icon-actions-bloqueado" : "icon-actions"); ?>"></i>
+                        </a>
                     </td>
                     <td>
-                        <a href="./eliminar-avisos.php?id=<?php echo $rows['ID_AVISOS']; ?>"><i class="fa fa-fw fa-trash icon-actions"></i></a>
-                        <i class="fa fa-fw fa-pencil-square-o icon-actions" onclick="abrirModalCargarAvisos()"></i>
-                        <!-- <form method="post" onsubmit="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
-                            <button class="cancelbtn" name="delete" value="<?php echo $rows['ID_AVISOS']; ?>">Eliminar</button>
-                        </form>
-                        <form method="post" onsubmit="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
-                            <i class="fa fa-fw fa-graduation-cap" style="color: red;"></i>
-                        </form> -->
+                        <a class="custom-icon" href="./eliminar-aviso.php?id=<?php echo $rows['ID_AVISOS']; ?>" onclick="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
+                            <i class="fa fa-fw fa-trash icon-actions"></i>
+                        </a>
+                        <!-- <i class="fa fa-fw fa-pencil-square-o icon-actions" onclick="abrirModalCargarAvisos()"></i> -->
                     </td>
                 </tr>
             <?php
@@ -137,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             while ($rows = mysqli_fetch_assoc($resultAlumnos)) {
             ?>
                 <tr>
-                    <td><?php echo $rows['NOMBRE']; ?></td>
+                    <td><?php echo $rows['NOMBRE']; ?> <?php echo $rows['APELLIDOS']; ?></td>
                     <td><?php echo $rows['CORREO']; ?></td>
                 </tr>
             <?php
