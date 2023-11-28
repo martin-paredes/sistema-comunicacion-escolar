@@ -9,11 +9,11 @@
 --
 -- Base de datos: `db_school`
 --
-CREATE DATABASE `sistema_comunicacion_escolar2`
+CREATE DATABASE `sistema_comunicacion_escolar`
 /*!40100 COLLATE 'utf8_general_ci' */
 ;
 
-USE `sistema_comunicacion_escolar2`;
+USE `sistema_comunicacion_escolar`;
 
 --
 -- Estructura de tabla `semestres`
