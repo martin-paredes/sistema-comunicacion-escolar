@@ -64,12 +64,19 @@ function ocultarMostrar(elements, style) {
 }
 
 function eliminarAviso(avisoId) {
-    console.log(avisoId);
     let text = "Realmente desea eliminar el aviso?";
     if (confirm(text) == true) {
         return true;
     } else {
         return false;
+    }
+}
+
+function activarAviso(activo) {
+    if (activo !== undefined) {
+        return false;
+    } else {
+        return true;
     }
 }
 
