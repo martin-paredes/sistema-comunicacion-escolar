@@ -79,6 +79,8 @@ CREATE TABLE `avisos` (
     `DESCRIPCION` VARCHAR(500) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
     `FECHA_INICIO` DATE NOT NULL,
     `FECHA_FIN` DATE NOT NULL,
+    `ACTIVO` TINYINT(3) NOT NULL DEFAULT '1',
+    `ESTATUS` TINYINT(3) NOT NULL DEFAULT '1',
     `RUTA` VARCHAR(500) NOT NULL COLLATE 'utf8_general_ci',
     `SEMESTRE` INT(10) NOT NULL,
     PRIMARY KEY (`ID_AVISOS`) USING BTREE,
@@ -200,6 +202,8 @@ INSERT INTO
         `DESCRIPCION`,
         `FECHA_INICIO`,
         `FECHA_FIN`,
+        `ACTIVO`,
+        `ESTATUS`,
         `RUTA`,
         `SEMESTRE`
     )
@@ -208,6 +212,8 @@ VALUES
         'Aviso UNO',
         '2023-11-05',
         '2023-12-05',
+        '1',
+        '1',
         '/avisos/semestres_1_2/uno.png',
         1
     );
@@ -217,6 +223,8 @@ INSERT INTO
         `DESCRIPCION`,
         `FECHA_INICIO`,
         `FECHA_FIN`,
+        `ACTIVO`,
+        `ESTATUS`,
         `RUTA`,
         `SEMESTRE`
     )
@@ -225,6 +233,8 @@ VALUES
         'Aviso DOS',
         '2023-11-05',
         '2023-12-05',
+        '1',
+        '1',
         '/avisos/semestres_3_4/dos.png',
         2
     );
@@ -234,6 +244,8 @@ INSERT INTO
         `DESCRIPCION`,
         `FECHA_INICIO`,
         `FECHA_FIN`,
+        `ACTIVO`,
+        `ESTATUS`,
         `RUTA`,
         `SEMESTRE`
     )
@@ -242,6 +254,8 @@ VALUES
         'Aviso TRES',
         '2023-11-05',
         '2023-12-05',
+        '1',
+        '1',
         '/avisos/semestres_5_6/tres.png',
         3
     );
