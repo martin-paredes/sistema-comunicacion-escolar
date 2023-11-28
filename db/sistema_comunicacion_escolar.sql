@@ -22,6 +22,7 @@ CREATE TABLE `semestres` (
     `ID_SEMESTRES` INT(10) NOT NULL AUTO_INCREMENT,
     `VALOR` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
     `DESCRIPCION` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+    `RUTA_CONTENEDOR` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
     PRIMARY KEY (`ID_SEMESTRES`) USING BTREE,
     INDEX `ID_SEMESTRES` (`ID_SEMESTRES`) USING BTREE
 ) COLLATE = 'utf8_general_ci' ENGINE = InnoDB AUTO_INCREMENT = 1;
@@ -91,19 +92,19 @@ CREATE TABLE `avisos` (
 -- Volcado de datos para la tabla `semestres`
 --
 INSERT INTO
-    `sistema_comunicacion_escolar`.`semestres` (`VALOR`)
+    `sistema_comunicacion_escolar`.`semestres` (`VALOR`, `RUTA_CONTENEDOR`)
 VALUES
-    ('1er y 2do Semestre');
+    ('1er y 2do Semestre', '../../avisos/semestres_1_2');
 
 INSERT INTO
-    `sistema_comunicacion_escolar`.`semestres` (`VALOR`)
+    `sistema_comunicacion_escolar`.`semestres` (`VALOR`, `RUTA_CONTENEDOR`)
 VALUES
-    ('3er y 4to Semestre');
+    ('3er y 4to Semestre', '../../avisos/semestres_3_4');
 
 INSERT INTO
-    `sistema_comunicacion_escolar`.`semestres` (`VALOR`)
+    `sistema_comunicacion_escolar`.`semestres` (`VALOR`, `RUTA_CONTENEDOR`)
 VALUES
-    ('5to y 6to Semestre');
+    ('5to y 6to Semestre', '../../avisos/semestres_5_6');
 
 --
 -- Volcado de datos para la tabla `administradores`
