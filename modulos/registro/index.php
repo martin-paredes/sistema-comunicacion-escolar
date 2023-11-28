@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['SEMESTRE_ID'] = $row['SEMESTRE'];
                 $_SESSION['SEMESTRE_DESC'] = $row['VALOR'];
                 $_SESSION['ROL'] = 'alumno';
+                $_SESSION['RUTA_CONTENEDOR'] = $row['RUTA_CONTENEDOR'];
                 header("location: ../feed-alumnos/index.php");
             } else {
                 echo '<script language="javascript">';

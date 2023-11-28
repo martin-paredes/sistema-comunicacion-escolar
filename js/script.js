@@ -63,7 +63,7 @@ function ocultarMostrar(elements, style) {
     }
 }
 
-function eliminarAviso(avisoId) {
+function eliminarAviso() {
     let text = "Realmente desea eliminar el aviso?";
     if (confirm(text) == true) {
         return true;

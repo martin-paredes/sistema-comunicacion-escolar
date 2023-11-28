@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </a>
                     </td>
                     <td>
-                        <a class="custom-icon" href="./eliminar-aviso.php?id=<?php echo $rows['ID_AVISOS']; ?>" onclick="return eliminarAviso(<?php echo $rows['ID_AVISOS']; ?>);">
+                        <a class="custom-icon" href="./eliminar-aviso.php?id=<?php echo $rows['ID_AVISOS']; ?>" onclick="return eliminarAviso();">
                             <i class="fa fa-fw fa-trash icon-actions"></i>
                         </a>
                         <!-- <i class="fa fa-fw fa-pencil-square-o icon-actions" onclick="abrirModalCargarAvisos()"></i> -->

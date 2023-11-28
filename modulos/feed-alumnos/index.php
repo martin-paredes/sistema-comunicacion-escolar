@@ -1,21 +1,20 @@
 <?php
 session_start();
+require_once("../funciones.php");
+
+$semestres = array("../../avisos/semestres_1_2", "../../avisos/semestres_3_4", "../../avisos/semestres_5_6");
+for ($i = 0; $i < count($semestres); $i++) {
+    if (!is_dir($semestres[$i])) {
+        mkdir($semestres[$i], 0777, true);
+    }
+}
+
+$resultAsesor = getAsesor();
+$resultAvisos = getAvisosAlumnos();
+$resultAvisos2 = getAvisosAlumnos();
 
 if ($_SESSION['CORREO'] === null) {
     header("location: ../../index.php");
-}
-
-if (isset($_GET['form'])) {
-
-    switch ($_POST['form']) {
-        case "A":
-            echo "submitted A";
-            break;
-
-        case "B":
-            echo "submitted B";
-            break;
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -25,17 +24,14 @@ if (isset($_GET['form'])) {
     <meta charset="UTF-8" />
     <title>***Avisos***</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../../estilos/styles.css" />
     <link rel="stylesheet" href="../../estilos/feed.css" />
+    <link rel="stylesheet" href="../../estilos/carrusel.scss" />
 </head>
 
 <body>
     <ul>
         <li>
-            <a class="active" onclick="ocultarMostrar(document.getElementById('asesor'), 'none'); ocultarMostrar(document.getElementById('avisos'), 'block');">
+            <a class="active" onclick="ocultarMostrar(document.getElementById('asesor'), 'none'); ocultarMostrar(document.getElementById('avisos'), 'grid');">
                 <i class="fa fa-fw fa-newspaper-o"></i> Avisos
             </a>
         </li>
@@ -50,61 +46,46 @@ if (isset($_GET['form'])) {
     </ul>
 
     <div id="asesor" class="container" style="display: none;">
-        <h2>Datos Asesor</h2>
+        <h2>Datos Asesor (<?php echo $_SESSION['SEMESTRE_DESC'] ?>)</h2>
         <table>
             <tr>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th>Semestre</th>
             </tr>
-            <tr>
-                <td>Tomás Calderón García</td>
-                <td>tomas@gmail.com</td>
-                <td>1</td>
-            </tr>
+            <?php
+            while ($rows = mysqli_fetch_assoc($resultAsesor)) {
+            ?>
+                <tr>
+                    <td><?php echo $rows['NOMBRE']; ?> <?php echo $rows['APELLIDOS']; ?></td>
+                    <td><?php echo $rows['CORREO']; ?></td>
+                </tr>
+            <?php
+            }
+            ?>
         </table>
     </div>
 
-    <div id="avisos" class="container">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-                <li data-target="#myCarousel" data-slide-to="4"></li>
-            </ol>
+    <div id="avisos" class="wrapper" id="avisos">
+        <nav class="lil-nav">
+            <?php
+            while ($rowsThumbnail = mysqli_fetch_assoc($resultAvisos2)) {
+            ?>
+                <a href="#<?php echo $rowsThumbnail['RUTA']; ?>">
+                    <img class="lil-nav__img" src="<?php echo $_SESSION['RUTA_CONTENEDOR'] . '/' . $rowsThumbnail['RUTA']; ?>" alt="<?php echo $rowsThumbnail['RUTA']; ?>" />
+                </a>
+            <?php
+            }
+            ?>
+        </nav>
 
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="../../avisos/semestres_1_2/aviso_1.jpg" alt="aviso_1" style="width:100%;">
-                </div>
-
-                <div class="item">
-                    <img src="../../avisos/semestres_1_2/aviso_2.jpg" alt="aviso_2" style="width:100%;">
-                </div>
-
-                <div class="item">
-                    <img src="../../avisos/semestres_1_2/aviso_3.jpg" alt="aviso_3" style="width:100%;">
-                </div>
-
-                <div class="item">
-                    <img src="../../avisos/semestres_1_2/aviso_4.jpg" alt="aviso_4" style="width:100%;">
-                </div>
-
-                <div class="item">
-                    <img src="../../avisos/semestres_1_2/aviso_5.jpg" alt="aviso_5" style="width:100%;">
-                </div>
-            </div>
-
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        <div class="gallery">
+            <?php
+            while ($rows = mysqli_fetch_assoc($resultAvisos)) {
+            ?>
+                <img class="gallery__img" id="<?php echo $rows['RUTA']; ?>" src="<?php echo $_SESSION['RUTA_CONTENEDOR'] . '/' . $rows['RUTA']; ?>" alt="<?php echo $rows['RUTA']; ?>" />
+            <?php
+            }
+            ?>
         </div>
     </div>
 

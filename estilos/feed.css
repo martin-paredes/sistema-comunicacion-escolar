@@ -1,3 +1,12 @@
+body {
+    background-color: #9dc8a8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding: 16px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
