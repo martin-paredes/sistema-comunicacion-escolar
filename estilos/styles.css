@@ -85,9 +85,18 @@ img.avatar {
     cursor: pointer;
 }
 
+.icon-actions-bloqueado {
+    color: #4a4d4c;
+    cursor: not-allowed;
+}
+
 .modal-content {
     width: 25%;
     margin: auto;
+}
+
+.custom-icon {
+    color: transparent!important;
 }
 
 @media screen and (min-width: 200px) {
