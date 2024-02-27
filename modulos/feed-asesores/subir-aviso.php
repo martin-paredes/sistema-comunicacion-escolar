@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $image = basename($_FILES["fileToUpload"]["name"]);
         $semestreId = $_SESSION['SEMESTRE_ID'];
-        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], '../../avisos/semestres_1_2/' . $image)) {
+        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $semestres[$semestreId - 1] . '/' . $image)) {
             echo "El archivo " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " ha sido subido.";
             $query = "INSERT INTO avisos (DESCRIPCION, FECHA_INICIO, FECHA_FIN, ACTIVO, ESTATUS, RUTA, SEMESTRE) VALUES ('$descripcion', '$fechaInicial', '$fechaFinal', 1, 1, '$image', $semestreId)";
             $result = mysqli_query($conexion, $query);
