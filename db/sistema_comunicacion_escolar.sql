@@ -214,7 +214,7 @@ VALUES
         '2023-12-05',
         '1',
         '1',
-        '/avisos/semestres_1_2/uno.png',
+        'uno.png',
         1
     );
 
@@ -235,7 +235,7 @@ VALUES
         '2023-12-05',
         '1',
         '1',
-        '/avisos/semestres_3_4/dos.png',
+        'dos.png',
         2
     );
 
@@ -256,6 +256,6 @@ VALUES
         '2023-12-05',
         '1',
         '1',
-        '/avisos/semestres_5_6/tres.png',
+        'tres.png',
         3
     );
